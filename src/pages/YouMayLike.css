@@ -1,0 +1,15 @@
+/* YouMayAlsoLike.css */
+.you-may-also-like {
+    margin-top: 40px;
+  }
+  
+  .you-may-also-like h2 {
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .related-products {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+  }
