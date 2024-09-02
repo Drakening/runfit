@@ -4,21 +4,20 @@ import { Navbar } from "./components/navbar";
 import { Shop } from "./pages/shop/shop";
 import { Contact } from "./pages/contact";
 import { Cart } from "./pages/cart/cart";
+import ProductPage from "./pages/product/ProductPage"; // Import ProductPage
 import { ShopContextProvider } from "./context/shop-context";
 
 function App() {
   return (
     <div className="App">
-    {/* Context provider named ShopContextProvider. Used to share state and functionality
-    with components nested in the component tree. */}
       <ShopContextProvider>
         <Router>
-          <Navbar /> 
+          <Navbar />
           <Routes>
-            <Route path="/" element={<Shop />} /> 
-            {/* The path is "/", it renders the <Shop /> component on the landing page. */}
+            <Route path="/" element={<Shop />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/cart" element={<Cart />} />
+            <Route path="/product/:productId" element={<ProductPage />} /> {/* Route for ProductPage */}
           </Routes>
         </Router>
       </ShopContextProvider>

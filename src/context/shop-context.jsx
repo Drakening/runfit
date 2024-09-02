@@ -1,10 +1,9 @@
-import { createContext, useEffect, useState } from "react";
+// shop-context.js
+import React, { createContext, useState } from "react";
 import { PRODUCTS } from "../products";
 
-// Context using React's createContext function.
 export const ShopContext = createContext(null);
 
-// Generatea the default cart structure based on the available products.
 const getDefaultCart = () => {
   let cart = {};
   for (let i = 1; i < PRODUCTS.length + 1; i++) {
@@ -14,11 +13,9 @@ const getDefaultCart = () => {
 };
 
 export const ShopContextProvider = (props) => {
-
-  // State variable to manage the cart items using React's useState hook.
   const [cartItems, setCartItems] = useState(getDefaultCart());
+  const [wishlist, setWishlist] = useState([]);
 
-  // Calculates the total amount of the items in the cart.
   const getTotalCartAmount = () => {
     let totalAmount = 0;
     for (const item in cartItems) {
@@ -30,27 +27,35 @@ export const ShopContextProvider = (props) => {
     return totalAmount;
   };
 
-  // Add an item to the cart.
   const addToCart = (itemId) => {
     setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] + 1 }));
   };
 
-  // Remove an item from the cart
   const removeFromCart = (itemId) => {
     setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] - 1 }));
   };
 
-  // Update the quantity of an item in the cart.
   const updateCartItemCount = (newAmount, itemId) => {
     setCartItems((prev) => ({ ...prev, [itemId]: newAmount }));
   };
 
-  // Reset the cart to its default state (which is empty).
   const checkout = () => {
     setCartItems(getDefaultCart());
   };
 
-  // Context value with cart-related functions.
+  const addToWishlist = (product) => {
+    setWishlist((prev) => [...prev, product]);
+  };
+
+  const removeFromWishlist = (productId) => {
+    setWishlist((prev) => prev.filter((item) => item.id !== productId));
+  };
+
+  const moveToCart = (product) => {
+    addToCart(product.id);
+    removeFromWishlist(product.id);
+  };
+
   const contextValue = {
     cartItems,
     addToCart,
@@ -58,9 +63,12 @@ export const ShopContextProvider = (props) => {
     removeFromCart,
     getTotalCartAmount,
     checkout,
+    wishlist,
+    addToWishlist,
+    removeFromWishlist,
+    moveToCart
   };
 
-  // Providing the context value to the components within the ShopContextProvider.
   return (
     <ShopContext.Provider value={contextValue}>
       {props.children}

@@ -1,35 +1,25 @@
 // WishlistPage.js
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import ProductCard from './ProductCard';
+import { ShopContext } from '../context/shop-context';
 
 const WishlistPage = () => {
-  const [wishlist, setWishlist] = useState([]);
+  const { wishlist, removeFromWishlist, moveToCart } = useContext(ShopContext);
+  const [localWishlist, setLocalWishlist] = useState([]);
 
   useEffect(() => {
-    const savedWishlist = JSON.parse(localStorage.getItem('wishlist') || '[]');
-    setWishlist(savedWishlist);
-  }, []);
-
-  const removeFromWishlist = (productId) => {
-    const updatedWishlist = wishlist.filter(item => item.id !== productId);
-    setWishlist(updatedWishlist);
-    localStorage.setItem('wishlist', JSON.stringify(updatedWishlist));
-  };
-
-  const moveToCart = (product) => {
-    // Implement logic to move item to cart
-    removeFromWishlist(product.id);
-  };
+    setLocalWishlist(wishlist);
+  }, [wishlist]);
 
   return (
     <div className="wishlist-page">
       <h1>Your Wishlist</h1>
       <div className="wishlist-items">
-        {wishlist.map(product => (
+        {localWishlist.map(product => (
           <ProductCard 
             key={product.id} 
-            product={product} 
-            onRemove={() => removeFromWishlist(product.id)}
+            product={product}
+            onRemove={() => removeFromWishlist(product.id)}  // Pass remove function to ProductCard
             onMoveToCart={() => moveToCart(product)}
           />
         ))}

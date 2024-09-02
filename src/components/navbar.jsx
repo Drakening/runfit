@@ -1,13 +1,13 @@
+// Navbar.js
 import React from "react";
 import { Link } from "react-router-dom";
-import { ShoppingCart } from "phosphor-react";
+import { ShoppingCart, Heart } from "phosphor-react";
 import { CartSummary } from "./CartSummary"; 
 import "./navbar.css";
 
 export const Navbar = () => {
   return (
     <div className="navbar">
-
       <div className="logo">
         <span>TMJ</span>
       </div>
@@ -16,14 +16,15 @@ export const Navbar = () => {
         <Link to="/about"> About </Link>
         <Link to="/contact"> Contact </Link>
         <div className="cart-main">
-        <Link to="/cart">
-          <ShoppingCart size={32} />
-        </Link>
-        <CartSummary />
+          <Link to="/wishlist">
+            <Heart size={32} />
+          </Link>
+          <Link to="/cart">
+            <ShoppingCart size={32} />
+          </Link>
+          <CartSummary />
         </div>
-        
       </div>
-
     </div>
   );
 };

@@ -1,19 +1,18 @@
+// CartItem.js
 import React, { useContext } from "react";
 import { ShopContext } from "../../context/shop-context";
 
-// CartItem component renders individual items within the shopping cart.
-// It displays the product image, name, price, and provides buttons to adjust the quantity in the cart.
 export const CartItem = (props) => {
-  // Destructuring rom the props.data object.
   const { id, productName, price, productImage } = props.data;
+  const { cartItems, addToCart, removeFromCart, updateCartItemCount, moveToWishlist } = useContext(ShopContext);
 
-  // Destructuring from the ShopContext.
-  const { cartItems, addToCart, removeFromCart, updateCartItemCount } =
-    useContext(ShopContext);
-
-  //handles the removing of specific item from the cart.
   const handleClearItem = () => {
     updateCartItemCount(0, id);
+  };
+
+  const handleMoveToWishlist = () => {
+    moveToWishlist(id);
+    updateCartItemCount(0, id); // Remove from cart
   };
 
   return (
@@ -34,6 +33,9 @@ export const CartItem = (props) => {
         <p className="price-x"> Price: R{price}</p>
         <button onClick={handleClearItem} className="clear-item-button">
           Delete
+        </button>
+        <button onClick={handleMoveToWishlist} className="move-to-wishlist-button">
+          Move to Wishlist
         </button>
       </div>
     </div>
