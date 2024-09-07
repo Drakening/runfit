@@ -8,22 +8,28 @@ import "./navbar.css";
 export const Navbar = () => {
   return (
     <div className="navbar">
-      <div className="logo">
-        <span>TMJ</span>
-      </div>
-      <div className="links">
-        <Link to="/"> Shop </Link>
-        <Link to="/about"> About </Link>
-        <Link to="/contact"> Contact </Link>
-        <div className="cart-main">
-          <Link to="/wishlist">
-            <Heart size={32} />
-          </Link>
-          <Link to="/cart">
-            <ShoppingCart size={32} />
-          </Link>
-          <CartSummary />
+      <div className="nav-container">
+
+        <a href="/" className="logo">
+            <span>TMJ</span>
+        </a>
+
+        <div className="links">
+            <Link to="/" className="current"> Shop </Link>
+            <Link to="/about"> About </Link>
+            <Link to="/contact"> Contact </Link>
         </div>
+
+        <div className="cart-main">
+              <Link to="/wishlist">
+                <Heart size={32} />
+              </Link>
+              <Link to="/cart">
+                <ShoppingCart size={32} />
+              </Link>
+              <CartSummary />
+        </div>
+
       </div>
     </div>
   );

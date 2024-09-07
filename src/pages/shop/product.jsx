@@ -16,12 +16,12 @@ export const Product = (props) => {
 
   return (
     <div className="product">
-      <img src={productImage} />
+      <img src={productImage} alt="product" />
       <div className="description">
         <p>
-          <b>{productName}</b>
+          <b className="productName">{productName}</b>
         </p>
-        <p> R{price}</p>
+        <p  className="productPrice"> R{price}</p>
       </div>
 
       {/* Button to add the product to cart. It also has dynamic text based on the quantity in the cart. */}

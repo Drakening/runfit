@@ -1,6 +1,6 @@
 // ProductInfo.js
 import React, { useContext } from 'react';
-import { ShopContext } from '../context/shop-context';
+import { ShopContext } from '../../context/shop-context';
 
 const ProductInfo = ({ product }) => {
   const { addToCart, addToWishlist, wishlist } = useContext(ShopContext);

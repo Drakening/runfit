@@ -51,6 +51,13 @@
   text-align: center;
 }
 
+Link .productName {
+  text-decoration: none;
+}
+.Link, .productPrice {
+  text-decoration: none;
+}
+
 .product:hover {
   transition: 0.3s ease-in;
   cursor: pointer;

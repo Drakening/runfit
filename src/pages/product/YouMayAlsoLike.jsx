@@ -1,5 +1,5 @@
 import React from 'react';
-import ProductCard from './ProductCard';
+import ProductCard from '../ProductCard';
 import { PRODUCTS } from '../../products'; // Make sure to import the PRODUCTS data
 
 const YouMayAlsoLike = ({ currentProductId }) => {
