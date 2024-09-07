@@ -1,25 +1,24 @@
 import React, { useState } from 'react';
 
-
 const ImageGallery = ({ images }) => {
-    const [currentImage, setCurrentImage] = useState(0);
-  
-    return (
-      <div className="image-gallery">
-        <img src={images[currentImage]} alt="Product" className="main-image" />
-        <div className="thumbnail-container">
-          {images.map((img, index) => (
-            <img
-              key={index}
-              src={img}
-              alt={`Thumbnail ${index + 1}`}
-              className="thumbnail"
-              onClick={() => setCurrentImage(index)}
-            />
-          ))}
-        </div>
+  const [currentImage, setCurrentImage] = useState(images[0]);
+
+  return (
+    <div className="image-gallery">
+      <img src={currentImage} alt="Product" className="main-image" />
+      <div className="thumbnail-container">
+        {images.map((img, index) => (
+          <img
+            key={index}
+            src={img}
+            alt={`Thumbnail ${index + 1}`}
+            className="thumbnail"
+            onClick={() => setCurrentImage(img)}
+          />
+        ))}
       </div>
-    );
-  };
-  
-  export default ImageGallery;
+    </div>
+  );
+};
+
+export default ImageGallery;
