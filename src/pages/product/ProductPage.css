@@ -1,99 +1,29 @@
-/* ProductPage.css */
 .product-page {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 30px;
-  }
-  
-  /* ImageGallery.css */
-  .image-gallery {
-    width: 100%;
-  }
-  
-  .main-image {
-    width: 100%;
-    height: auto;
-    border-radius: 8px;
-    margin-bottom: 10px;
-  }
-  
-  .thumbnail-container {
-    display: flex;
-    gap: 10px;
-  }
-  
-  .thumbnail {
-    width: 60px;
-    height: 60px;
-    object-fit: cover;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: opacity 0.3s ease;
-  }
-  
-  .thumbnail:hover {
-    opacity: 0.7;
-  }
-  
-  /* ProductInfo.css */
-  .product-info {
-    padding: 20px;
-  }
-  
-  .product-info h1 {
-    font-size: 24px;
-    margin-bottom: 10px;
-  }
-  
-  .price {
-    font-size: 20px;
-    font-weight: bold;
-    color: #e53935;
-    margin-bottom: 15px;
-  }
-  
-  .description {
-    margin-bottom: 20px;
-    line-height: 1.6;
-  }
-  
-  .add-to-cart {
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-    border-radius: 4px;
-    transition: background-color 0.3s ease;
-  }
-  
-  .add-to-cart:hover {
-    background-color: #45a049;
-  }
-  
-  /* Reviews.css */
-  .reviews {
-    grid-column: 1 / -1;
-    margin-top: 30px;
-  }
-  
-  .reviews h2 {
-    font-size: 20px;
-    margin-bottom: 15px;
-  }
-  
-  .review {
-    background-color: #f9f9f9;
-    padding: 15px;
-    border-radius: 8px;
-    margin-bottom: 15px;
-  }
-  
-  .stars {
-    color: #ffc107;
-    margin-bottom: 5px;
-  }
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.product-page .image-gallery {
+  margin-bottom: 20px;
+}
+
+.product-page .product-info {
+  margin-bottom: 20px;
+}
+
+.product-page .reviews {
+  margin-bottom: 20px;
+}
+
+.product-page .you-may-also-like {
+  margin-top: 40px;
+}
+
+.related-products {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
