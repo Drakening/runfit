@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './ImageGallery.css';
 
 const ImageGallery = ({ images }) => {
   const [currentImage, setCurrentImage] = useState(images[0]);
